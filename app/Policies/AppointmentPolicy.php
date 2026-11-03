@@ -38,6 +38,11 @@ public function view(User $user, Appointment $appointment): bool
 
     public function delete(User $user, Appointment $appointment): bool
     {
-        return false; // Only Admin and reception can delete appointments
+        if($user->role_id === 1 || $user->role_id === 3){
+            return true;
+        }else{
+            return false;
+        }
+         // Only Admin and reception can delete appointments
     }
 }
